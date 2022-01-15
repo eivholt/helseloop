@@ -12,7 +12,7 @@ const Appointment: React.FC = () => {
 	const [data, setData] = useState<AppointmentType | null>(null);
 
 	const fetchData = async (): Promise<AppointmentType> =>
-		fetch("data.json", {
+		fetch("appointmentData.json", {
 			headers: {
 				"Content-Type": "application/json",
 				Accept: "application/json",
@@ -26,12 +26,12 @@ const Appointment: React.FC = () => {
 	if (!data) return <></>;
 
 	return (
-		<div>
+		<div className="container">
 			<h1>Innkalling til time</h1>
 			<h2>{data.title}</h2>
 
 			<h3>Tid:</h3>
-			<p>{data.date.toString()}</p>
+			<p>{new Date(data.date).toString()}</p>
 
 			<h3>Oppmøte:</h3>
 			<p>Se innkallingsbrev</p>

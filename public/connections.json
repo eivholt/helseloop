@@ -1,0 +1,25 @@
+{
+    "connections": [ 
+        {
+            "title": "Helsebussen Leknes henter deg hjemme",
+            "origin": "Hjemme",
+            "destination": "Leknes lufthavn",
+            "startTime": "2022-07-10T07:30:00.000Z",
+            "coordinates": "på sporet"
+        },
+        {
+            "title": "Widerøe avgang 08:45, assistanse venter ved ankomst med Helsebussen.",
+            "origin": "Leknes lufthavn",
+            "destination": "Bodø lufthavn",
+            "startTime": "2022-07-10T08:00:00.000Z",
+            "coordinates": "på sporet"
+        },
+        {
+            "title": "Assistanse fra flyet. Helsebussen Bodø henter deg ved bagasjebåndet på flyplassen.",
+            "origin": "Bodø lufthavn",
+            "destination": "Nordlandssykehuset",
+            "startTime": "2022-07-10T09:15:00.000Z",
+            "coordinates": "på sporet"
+        }
+    ]
+}

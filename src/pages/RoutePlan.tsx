@@ -15,23 +15,18 @@ const RoutePlan = () => {
 		})
 			.then((res) => res.json())
 			//convert date string to Date object
-			.then((res) => {
-				console.log(res);
-				var noe = res.connections.map((a: any) => ({
+			.then((res) =>
+				res.connections.map((a: any) => ({
 					...a,
 					startTime: new Date(a.startTime),
-				}));
-				console.log({ noe });
-				return noe;
-			});
+				}))
+			);
 
 	useEffect(() => {
 		fetchData().then((jsonRes) => setData(jsonRes));
 	}, []);
 
 	if (!data) return <></>;
-
-	console.log({ data });
 
 	return (
 		<>

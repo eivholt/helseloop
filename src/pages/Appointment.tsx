@@ -1,38 +1,50 @@
-import React from 'react';
-import Link from 'react-router';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 interface AppointmentType {
-  title: string;
-  date: Date;
-  instruction: string;
-  address: string;
+	title: string;
+	date: Date;
+	instruction: string;
+	address: string;
 }
 
-const AppointmentData: AppointmentType = {
-  title: 'Avtale med Medisinsk avdeling til Nordlandssykehuset',
-  date: new Date(2022, 6, 10, 10, 30),
-  instruction: 'Se innkallingsbrev',
-  address: 'Behandlingsområde K3 i 3. etasje, Parkveien 95 8093 Bodø',
+const Appointment: React.FC = () => {
+	const [data, setData] = useState<AppointmentType | null>(null);
+
+	const fetchData = async (): Promise<AppointmentType> =>
+		fetch("data.json", {
+			headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+			},
+		}).then((res) => res.json());
+
+	useEffect(() => {
+		fetchData().then((jsonRes) => setData(jsonRes));
+	}, []);
+
+	if (!data) return <></>;
+
+	return (
+		<div>
+			<h1>Innkalling til time</h1>
+			<h2>{data.title}</h2>
+
+			<h3>Tid:</h3>
+			<p>{data.date.toString()}</p>
+
+			<h3>Oppmøte:</h3>
+			<p>Se innkallingsbrev</p>
+
+			<h3>Sted:</h3>
+			<p>{data.address}</p>
+
+			<Link to="/routeplanner">Åpne reiseplanlegger</Link>
+
+			<h3>VIKTIG!</h3>
+			<p>{data.instruction}</p>
+		</div>
+	);
 };
-
-function Appointment() {
-  return (
-    <div>
-      <h1>Innkalling til time</h1>
-      <h2>{AppointmentData.title}</h2>
-
-      <h3>Tid:</h3>
-      <p>{AppointmentData.date}</p>
-
-      <h3>Oppmøte:</h3>
-      <p>{AppointmentData.instruction}</p>
-
-      <h3>Sted:</h3>
-      <p>{AppointmentData.address}</p>
-
-      <Link to="./routeplanner">Apne reiseplanlegger</Link>
-    </div>
-  );
-}
 
 export default Appointment;

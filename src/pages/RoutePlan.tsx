@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import Connection from "../components/Connection";
+import Marker from "../components/Marker";
 import RouteMap from "../components/RouteMap";
 
 const RoutePlan = () => {
@@ -26,6 +27,11 @@ const RoutePlan = () => {
 		fetchData().then((jsonRes) => setData(jsonRes));
 	}, []);
 
+	const coordinates: any = useMemo(
+		() => data?.map((a: any) => a.coordinates),
+		[data]
+	);
+
 	if (!data) return <></>;
 
 	return (
@@ -35,12 +41,32 @@ const RoutePlan = () => {
 			{data.map((connection: any, index: number) => (
 				<Connection {...connection} key={index} />
 			))}
-			<RouteMap
-				center={{ lat: 67.279999, lng: 14.40501 }}
-				zoom={7}
-			></RouteMap>
+
+			<RouteMap center={center(coordinates)} zoom={7.5}>
+				{coordinates.map((a: any, index: number) => (
+					<Marker
+						position={a}
+						key={index}
+						icon={{
+							url: imgUrl(index + 1),
+							scaledSize: new google.maps.Size(40, 40),
+						}}
+					/>
+				))}
+			</RouteMap>
 		</>
 	);
 };
+
+const center = (arr: { lat: number; lng: number }[]) => {
+	var x = arr.map((xy) => xy.lat);
+	var y = arr.map((xy) => xy.lng);
+	var cx = (Math.min(...x) + Math.max(...x)) / 2;
+	var cy = (Math.min(...y) + Math.max(...y)) / 2;
+	return { lat: cx, lng: cy };
+};
+
+const imgUrl = (a: any) =>
+	"http://maps.google.com/mapfiles/kml/paddle/" + a + ".png";
 
 export default RoutePlan;

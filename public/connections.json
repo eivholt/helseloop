@@ -6,8 +6,8 @@
             "destination": "Leknes lufthavn",
             "startTime": "2022-07-10T07:30:00.000Z",
             "coordinates": {
-                "lat": 67.42807061323167,
-                "lng": 14.39189606177877
+                "lat": 68.167158,
+                "lng": 13.838745
             }
         },
         {
@@ -16,8 +16,8 @@
             "destination": "Bodø lufthavn",
             "startTime": "2022-07-10T08:00:00.000Z",
             "coordinates": {
-                "lat": 67.39325473806393,
-                "lng": 14.32323151099752
+                "lat": 68.153425,
+                "lng": 13.614536
             }
         },
         {

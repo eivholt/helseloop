@@ -32,12 +32,13 @@ const RoutePlan = () => {
 		<>
 			<Link to="/routeplanner">Tilbake</Link>
 			<h2>Reiseplan</h2>
-
 			{data.map((connection: any, index: number) => (
 				<Connection {...connection} key={index} />
 			))}
-
-			<RouteMap coordinates={data.map((a: any) => a.coordinates)} />
+			<RouteMap
+				center={{ lat: 67.279999, lng: 14.40501 }}
+				zoom={7}
+			></RouteMap>
 		</>
 	);
 };

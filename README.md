@@ -1,6 +1,13 @@
-# Getting Started with Create React App
+# Helse loop
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Helse loop aims to improve logistics for patients by providing a route to their appointment. This project is only a short demo. 
+
+
+## Local Setup
+
+In order for the map to work, we need to have an [Google Maps API key](https://developers.google.com/maps/documentation/javascript/get-api-key).
+
+Once you've obtained your key, create a .env file in project root folder and insert your key in a variable called `REACT_APP_GOOGLE_MAPS_API_KEY`.
 
 ## Available Scripts
 
@@ -23,7 +30,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn lint --fix` 
-
-Formats the code based on the Airbnb format.

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { getNorwegianDateString } from "../components/utils";
 
 interface AppointmentType {
 	title: string;
@@ -20,7 +21,9 @@ const Appointment: React.FC = () => {
 		}).then((res) => res.json());
 
 	useEffect(() => {
-		fetchData().then((jsonRes) => setData(jsonRes));
+		fetchData().then((jsonRes) =>
+			setData({ ...jsonRes, date: new Date(jsonRes.date) })
+		);
 	}, []);
 
 	if (!data) return <></>;
@@ -31,7 +34,7 @@ const Appointment: React.FC = () => {
 			<h2>{data.title}</h2>
 
 			<h3>Tid:</h3>
-			<p>{new Date(data.date).toString()}</p>
+			<p>{getNorwegianDateString(data.date)}</p>
 
 			<h3>Oppmøte:</h3>
 			<p>Se innkallingsbrev</p>

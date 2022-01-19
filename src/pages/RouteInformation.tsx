@@ -6,6 +6,7 @@ import CancelIcon from "../icons/x.svg";
 import { Link } from "react-router-dom";
 import DepartureInput from "../components/DepartureInput";
 import CompanionInput from "../components/CompanionInput";
+import { getNorwegianDateString } from "../components/utils";
 
 const RouteInformation = () => {
 	const [data, setData] = useState<any>(null);
@@ -50,7 +51,7 @@ const RouteInformation = () => {
 			<h2>{data.title}</h2>
 
 			<h3>Tid:</h3>
-			<p>{new Date(data.date).toString()}</p>
+			<p>{getNorwegianDateString(new Date(data.date))}</p>
 
 			<h3>Sted:</h3>
 			<p>{data.address}</p>

@@ -15,7 +15,7 @@ const DepartureInput: React.FC<DepartureInputProps> = ({
 		<>
 			{isEditing ? (
 				<>
-					<label htmlFor="address">Addresse:</label>
+					<label htmlFor="address">Adresse:</label>
 					<input
 						type="text"
 						id="address"

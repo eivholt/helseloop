@@ -1,4 +1,5 @@
 import React from "react";
+import { formatedTime, formatNumber } from "./utils";
 
 export interface ConnectionProps {
 	startTime: string;
@@ -11,18 +12,10 @@ const Connection: React.FC<ConnectionProps> = ({
 	description,
 	title,
 }) => {
-	const time = new Date(startTime);
-
-	const formatNumber = (a: number): string =>
-		a < 10 ? "0" + a : a.toString();
-
-	const formatedTime =
-		formatNumber(time.getHours()) + ":" + formatNumber(time.getMinutes());
-
 	return (
 		<>
 			<h3>
-				{formatedTime} {title}
+				{formatedTime(new Date(startTime))} {title}
 			</h3>
 			<p>{description}</p>
 		</>

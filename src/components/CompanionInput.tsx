@@ -31,7 +31,7 @@ const CompanionInput: React.FC<CompanionInputProps> = ({
 						/>
 						<label htmlFor="companion-choice">
 							Jeg ønsker ledsager
-						</label>{" "}
+						</label>
 					</div>
 					<div>
 						<label htmlFor="companion-input">Ledsager: </label>

@@ -1,30 +1,30 @@
 import React from "react";
 
 export interface ConnectionProps {
-	startTime: Date;
-	origin: string;
+	startTime: string;
 	title: string;
+	description: string;
 }
 
 const Connection: React.FC<ConnectionProps> = ({
 	startTime,
-	origin,
+	description,
 	title,
 }) => {
+	const time = new Date(startTime);
+
 	const formatNumber = (a: number): string =>
 		a < 10 ? "0" + a : a.toString();
 
 	const formatedTime =
-		formatNumber(startTime.getHours()) +
-		":" +
-		formatNumber(startTime.getMinutes());
+		formatNumber(time.getHours()) + ":" + formatNumber(time.getMinutes());
 
 	return (
 		<>
 			<h3>
-				{formatedTime} {origin}
+				{formatedTime} {title}
 			</h3>
-			<p>{title}</p>
+			<p>{description}</p>
 		</>
 	);
 };
